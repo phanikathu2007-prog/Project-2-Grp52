@@ -9,6 +9,12 @@ public class VTOrderMaster{
     private OrderQueue orderQueue;
 
 public VTOrderMaster(){
+    scanner = new Scanner(System.in);
+    menu = new HashMap<String, Food>();
+    orderQueue = new OrderQueue();
+
+    menu.put("Burger", new Food("Burger", 7.00, 0, 15));
+    menu.put("Fries", new Food("Fries", 3.00, 0, 5));
 
 }
 
