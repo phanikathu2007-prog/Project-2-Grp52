@@ -7,4 +7,10 @@ public class VTOrderMaster{
     private OrderInfo order;
     private HashMap<String, Food> menu;
     private OrderQueue orderQueue;
+
+public VTOrderMaster(){
+
+}
+
+    
 }
