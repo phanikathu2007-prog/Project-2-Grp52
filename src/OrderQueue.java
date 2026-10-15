@@ -22,7 +22,7 @@ public class OrderQueue
     {
         if (order != null)
         {
-            orders.add(order);
+            orders.addToEnd(order);
         }
     }
 
@@ -58,5 +58,22 @@ public class OrderQueue
         }
 
         return -1;
+    }
+
+    /**
+    * Returns the total estimated preparation time of all
+    * orders currently in the queue.
+    * @return total preparation time in minutes
+    */
+    public int getTotalWaitTime()
+    {
+        int totalWaitTime = 0;
+
+        for (int i = 0; i < orders.size(); i++)
+        {
+            totalWaitTime += orders.get(i).getWaitTime();
+        }
+
+        return totalWaitTime;
     }
 }
