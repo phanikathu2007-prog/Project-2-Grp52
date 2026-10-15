@@ -76,4 +76,34 @@ public class OrderQueue
 
         return totalWaitTime;
     }
+
+    /**
+     * Returns the estimated wait time until the specified order is ready.
+     *
+     * @param order the customer's order
+     * @return estimated wait time in minutes, or -1 if order not found
+     */
+    public double totalWaitTimeForOrder(OrderInfo order)
+    {
+        if (order == null)
+        {
+            return -1;
+        }
+    
+        double total = 0.00;
+    
+        for (int i = 0; i < orders.size(); i++)
+        {
+            OrderInfo current = orders.get(i);
+    
+            total += current.getWaitTime();
+    
+            if(current.getUUID().equals(order.getUUID()))
+            {
+                return total;
+            }
+        }
+    
+        return -1;
+    }
 }
