@@ -69,15 +69,8 @@ public class VTOrderMaster
             }
             else if (choice.equals("2"))
             {
-                if (client != null)
-                {
-                    client.viewOrder();
-                }
-                else
-                {
-                    System.out.println(
-                        "Please place an order first.");
-                }
+                System.out.println("Orders ahead: " + orderQueue.size());
+                System.out.println("Estimated wait time: "+ orderQueue.getTotalWaitTime() + " minutes");
             }
             else if (choice.equals("3"))
             {
