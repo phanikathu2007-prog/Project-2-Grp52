@@ -81,9 +81,11 @@ public class VTOrderMaster
                 else
                 {
                     System.out.println("Food Menu");
-                    for (Food food : menu.values())
+                    for (String foodName : menu.keySet())
                     {
-                        System.out.println(food.getName() + " - $" + food.getPrice());
+                        Food food = menu.get(foodName);
+            
+                        System.out.println(foodName + ": $" + food.getPrice());
                     }
                 }
             }
