@@ -1,4 +1,5 @@
 
+import java.util.UUID;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -16,7 +17,14 @@ public class VTOrderMaster
     private static Client client;
     private static HashMap<String, Food> menu;
     private static OrderQueue orderQueue;
+    private static int nextOrderNumber = 1;
 
+    /**
+     * Starts the java program, displays the main menu, and handles the 
+     * customers choices.
+     * @param args An array of String objects that stores command-line 
+     * arguments passed to the program at runtime
+     */
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
@@ -24,11 +32,9 @@ public class VTOrderMaster
         menu = new HashMap<String, Food>();
         orderQueue = new OrderQueue();
 
-        menu.put("Burger", new Food("Burger", 7.00, 0, 15));
-        menu.put("Fries", new Food("Fries", 3.00, 0, 5));
-
-        client = new Client(menu, orderQueue, scanner);
-
+        menu.put("Burger", new Food("Burger", 7.00, 15.00));
+        menu.put("Fries", new Food("Fries", 3.00, 5.00));
+        
         boolean running = true;
 
         while (running)
@@ -44,11 +50,34 @@ public class VTOrderMaster
 
             if (choice.equals("1"))
             {
+                System.out.print("Enter your name: ");
+                String customerName = scanner.nextLine();
+                
+                UUID customerUUID = UUID.randomUUID();
+                
+                client = new Client(
+                    menu,
+                    orderQueue,
+                    scanner,
+                    customerName,
+                    customerUUID,
+                    nextOrderNumber
+                );
+                    
                 client.placeOrder();
+                nextOrderNumber++;
             }
             else if (choice.equals("2"))
             {
-                client.viewOrder();
+                if (client != null)
+                {
+                    client.viewOrder();
+                }
+                else
+                {
+                    System.out.println(
+                        "Please place an order first.");
+                }
             }
             else if (choice.equals("3"))
             {
