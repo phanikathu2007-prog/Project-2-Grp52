@@ -69,7 +69,7 @@ public class OrderQueue
     {
         double totalWaitTime = 0;
 
-        for (double i = 0; i < orders.size(); i++)
+        for (int i = 0; i < orders.size(); i++)
         {
             totalWaitTime += orders.get(i).getWaitTime();
         }
