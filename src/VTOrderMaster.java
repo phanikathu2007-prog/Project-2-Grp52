@@ -57,7 +57,7 @@ public class VTOrderMaster
             else if (choice.equals("4"))
             {
                 running = false;
-                System.out.println("Goodbye!");
+                System.out.println("Goodbye, come back when you're hungry!");
             }
             else
             {
