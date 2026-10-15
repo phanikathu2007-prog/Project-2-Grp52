@@ -75,4 +75,20 @@ public class OrderQueueTest
 
         assertEquals(expected, queue.getTotalWaitTime(), 0.001);
     }
+
+    /**
+     * Tests getting the total wait time for a specific order.
+     */
+    @Test
+    public void testTotalWaitTimeForOrder()
+    {
+        assertEquals(-1, queue.totalWaitTimeForOrder(null), 0.001);
+
+        queue.addOrder(order1);
+        queue.addOrder(order2);
+
+        double expected = order1.getWaitTime() + order2.getWaitTime();
+
+        assertEquals(expected, queue.totalWaitTimeForOrder(order2), 0.001);
+    }
 }
