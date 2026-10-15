@@ -69,12 +69,23 @@ public class VTOrderMaster
             }
             else if (choice.equals("2"))
             {
-                System.out.println("Orders ahead: " + orderQueue.size());
+                System.out.println("Orders ahead: " + orderQueue.getNumberOfOrders());
                 System.out.println("Estimated wait time: "+ orderQueue.getTotalWaitTime() + " minutes");
             }
             else if (choice.equals("3"))
             {
-                client.viewMenu();
+                if (client != null)
+                {
+                    client.viewMenu();
+                }
+                else
+                {
+                    System.out.println("Food Menu");
+                    for (Food food : menu.values())
+                    {
+                        System.out.println(food.getName() + " - $" + food.getPrice());
+                    }
+                }
             }
             else if (choice.equals("4"))
             {
