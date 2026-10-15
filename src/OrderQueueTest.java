@@ -21,6 +21,7 @@ public class OrderQueueTest
     @Before
     public void setUp()
     {
+        queue = new OrderQueue();
         LinkedChain<Food> foods1 = new LinkedChain<Food>();
         LinkedChain<Food> foods2 = new LinkedChain<Food>();
 
@@ -65,11 +66,13 @@ public class OrderQueueTest
     @Test
     public void testGetTotalWaitTime()
     {
-        assertEquals(0, queue.getTotalWaitTime());
+        assertEquals(0.0, queue.getTotalWaitTime(), 0.001);
 
         queue.addOrder(order1);
         queue.addOrder(order2);
 
-        assertEquals(25, queue.getTotalWaitTime());
+        double expected = order1.getWaitTime() + order2.getWaitTime();
+
+        assertEquals(expected, queue.getTotalWaitTime(), 0.001);
     }
 }
