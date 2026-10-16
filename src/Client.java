@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.UUID;
 
 /**
  * Responsible for the actions the customer can perform, such as placing 
@@ -157,11 +156,16 @@ public class Client
             return;
         }
         
-        double waitTime = totalWaitTimeForOrder(order);
+       // double waitTime = totalWaitTimeForOrder(order);
+        double waitTime = orderQueue.getTotalWaitTime();
 
         if (waitTime >= 0) {
-            System.out.println("Orders ahead: " + getOrdersAhead(order));
+            //System.out.println("Orders ahead: " + getOrdersAhead(order));
+            System.out.println("Orders ahead: " + orderQueue.getOrdersAhead(order));
             System.out.println("Estimated wait time: " + waitTime + " minutes");
+        }
+        else {
+            System.out.println("Order not found in queue.");
         }
     }
 }
