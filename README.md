@@ -45,3 +45,34 @@ Test wait time calculations with multiple orders and empty queues. Test finding 
 Romeo: Added food class and food test class
 Brinda: Added OrderInfo, OrderInfoTest, Client, ClientTest, and OrderQueue classes
 Phani: Created the VTOrderMaster and the test for the linkedChain class.
+
+Food.java
+Romeo created the Food class, which stores a food item's name, price, and preparation time.
+
+FoodTest.java
+Romeo created the test class for Food to check that the class works correctly with valid and invalid inputs.
+
+OrderInfo.java
+Brinda created the OrderInfo class, which stores customer and order information and calculates the order's total price and estimated preparation time.
+
+OrderInfoTest.java
+Brinda created the test class for OrderInfo to verify its methods and how it handles different inputs.
+
+Client.java
+Brinda created the Client class, which handles customer interactions, food selection, and order placement.
+
+ClientTest.java
+Brinda created the test class for Client to test customer actions and order placement.
+
+OrderQueue.java
+Brinda created the OrderQueue class, which manages active orders and provides methods for checking order counts and estimated wait times.
+
+VTOrderMaster.java
+Phani created the main runner class, which displays the main menu and connects the program's options to the appropriate methods.
+
+LinkedChainTest.java
+Phani created the test class for LinkedChain to check its methods with normal and invalid inputs.
+
+# GenAI Notice
+
+We used generative AI when understanding how we would impement the UUID into our classes without yet making the class. This will save time in the future so we dont have to go back to the prior classes and change alot of code. We also used AI when working on the JUnit tests since because we could not get the package student packages into vscode and the directions said to use junit.
