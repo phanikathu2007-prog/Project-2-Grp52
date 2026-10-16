@@ -1,7 +1,6 @@
-public class FoodTest {
-    import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 /**
  * Tests for the Food class.
@@ -9,8 +8,6 @@ import org.junit.jupiter.api.Test;
 public class FoodTest
 {
     private static final double DELTA = 0.0001;
-
-    // ---------- Valid construction ----------
 
     @Test
     public void testConstructorValidInput()
@@ -23,23 +20,7 @@ public class FoodTest
     }
 
     @Test
-    public void testConstructorZeroPriceAllowed()
-    {
-        Food food = new Food("Free Sample", 0.00, 5.0);
-
-        assertEquals(0.00, food.getPrice(), DELTA);
-    }
-
-    @Test
-    public void testConstructorZeroPrepTimeAllowed()
-    {
-        Food food = new Food("Salad", 6.50, 0.00);
-
-        assertEquals(0.00, food.getPrepTime(), DELTA);
-    }
-
-    @Test
-    public void testConstructorZeroPriceAndPrepTimeAllowed()
+    public void testConstructorZeroPriceAndPrepTime()
     {
         Food food = new Food("Water", 0.00, 0.00);
 
@@ -56,53 +37,83 @@ public class FoodTest
         assertEquals("X", food.getName());
     }
 
-    // Tests Invalid names
-
     @Test
     public void testConstructorNullName()
     {
-        IllegalArgumentException e = assertThrows(
-            IllegalArgumentException.class,
-            () -> new Food(null, 10.00, 10.0));
-
-        assertEquals("Invalid food information.", e.getMessage());
+        try
+        {
+            new Food(null, 10.00, 10.0);
+            fail("Expected IllegalArgumentException");
+        }
+        catch (IllegalArgumentException e)
+        {
+            assertEquals("Invalid food information.", e.getMessage());
+        }
     }
 
     @Test
     public void testConstructorEmptyName()
     {
-        IllegalArgumentException e = assertThrows(
-            IllegalArgumentException.class,
-            () -> new Food("", 10.00, 10.0));
-
-        assertEquals("Invalid food information.", e.getMessage());
+        try
+        {
+            new Food("", 10.00, 10.0);
+            fail("Expected IllegalArgumentException");
+        }
+        catch (IllegalArgumentException e)
+        {
+            assertEquals("Invalid food information.", e.getMessage());
+        }
     }
-
-    // Tests invalid prices
 
     @Test
     public void testConstructorNegativePrice()
     {
-        IllegalArgumentException e = assertThrows(
-            IllegalArgumentException.class,
-            () -> new Food("Burger", -0.01, 10.0));
-
-        assertEquals("Invalid food information.", e.getMessage());
+        try
+        {
+            new Food("Burger", -0.01, 10.0);
+            fail("Expected IllegalArgumentException");
+        }
+        catch (IllegalArgumentException e)
+        {
+            assertEquals("Invalid food information.", e.getMessage());
+        }
     }
-
-    @Test
-    public void testConstructorLargeNegativePrice()
-    {
-        assertThrows(IllegalArgumentException.class,
-            () -> new Food("Burger", -100.00, 10.0));
-    }
-
-    // ---------- Invalid prep time ----------
 
     @Test
     public void testConstructorNegativePrepTime()
     {
-        IllegalArgumentException e = assertThrows(
-            IllegalArgumentException.class,
-            () -> new Food("Burger", 10.00,
+        try
+        {
+            new Food("Burger", 10.00, -0.01);
+            fail("Expected IllegalArgumentException");
+        }
+        catch (IllegalArgumentException e)
+        {
+            assertEquals("Invalid food information.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testGetName()
+    {
+        Food food = new Food("Burger", 7.00, 15.0);
+
+        assertEquals("Burger", food.getName());
+    }
+
+    @Test
+    public void testGetPrice()
+    {
+        Food food = new Food("Fries", 3.00, 5.0);
+
+        assertEquals(3.00, food.getPrice(), DELTA);
+    }
+
+    @Test
+    public void testGetPrepTime()
+    {
+        Food food = new Food("Pizza", 12.99, 20.5);
+
+        assertEquals(20.5, food.getPrepTime(), DELTA);
+    }
 }
