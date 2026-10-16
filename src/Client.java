@@ -163,8 +163,5 @@ public class Client
             System.out.println("Orders ahead: " + getOrdersAhead(order));
             System.out.println("Estimated wait time: " + waitTime + " minutes");
         }
-        else {
-            System.out.println("Order not found in queue.");
-        }
     }
 }
