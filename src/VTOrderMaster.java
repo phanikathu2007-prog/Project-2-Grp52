@@ -70,13 +70,16 @@ public class VTOrderMaster
                     customerUUID,
                     nextOrderNumber
                 );
-                    
+                int ordersBefore = orderQueue.getNumberOfOrders();
+
                 client.placeOrder();
+                if (orderQueue.getNumberOfOrders() > ordersBefore)
+                {
+                    System.out.println("Your order number is: " + nextOrderNumber);
+                    System.out.println("Your cancellation UUID is: " + customerUUID);
 
-                System.out.println("Your order number is: " + nextOrderNumber);
-                System.out.println("Your cancellation UUID is: " + customerUUID);
-
-                nextOrderNumber++;
+                    nextOrderNumber++;
+                }
             }
             else if (choice.equals("2"))
             {
