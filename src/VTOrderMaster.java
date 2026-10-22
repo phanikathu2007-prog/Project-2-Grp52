@@ -35,6 +35,11 @@ public class VTOrderMaster
         authenticator = new Authenticator(orderQueue);
         menu.put("Burger", new Food("Burger", 7.00, 15.00));
         menu.put("Fries", new Food("Fries", 3.00, 5.00));
+        menu.put("Cookie", new Food("Cookie", 5.00, 10.00));
+        menu.put("Donut", new Food("Donut", 4.00, 9.00));
+        menu.put("Pizza", new Food("Pizza", 7.00, 11.00));
+
+
         
         boolean running = true;
 
