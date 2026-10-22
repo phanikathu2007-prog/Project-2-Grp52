@@ -46,6 +46,24 @@ public class OrderQueueTest
         assertEquals(2, queue.getNumberOfOrders());
     }
 
+
+/**
+     * Tests removing an order from the queue.
+     */
+    @Test
+    public void testRemoveOrder()
+    {
+        queue.addOrder(order1);
+        queue.addOrder(order2);
+
+        assertTrue(queue.removeOrder(order1.getUUID()));
+        assertEquals(1, queue.getNumberOfOrders());
+
+        assertFalse(queue.removeOrder(UUID.randomUUID()));
+        assertFalse(queue.removeOrder(null));
+        assertEquals(1, queue.getNumberOfOrders());
+    }
+
     /**
      * Tests getting the number of orders ahead.
      */

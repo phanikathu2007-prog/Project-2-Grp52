@@ -1,3 +1,5 @@
+import java.util.UUID;
+
 /**
  *  Owns the LinkedChain queue of active orders.
  *  
@@ -24,6 +26,30 @@ public class OrderQueue
         {
             orders.addToEnd(order);
         }
+    }
+
+    /**
+     * Finds and removes an order from the queue matching the given UUID.
+     * @param customerUUID the UUID of the order to remove
+     * @return true if the order was found and removed, false otherwise
+     */
+    public boolean removeOrder(UUID customerUUID)
+    {
+        if (customerUUID == null)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < orders.size(); i++)
+        {
+            OrderInfo current = orders.get(i);
+            if (current != null && current.getUUID().equals(customerUUID))
+            {
+                return orders.remove(current);
+            }
+        }
+
+        return false;
     }
 
     /**
