@@ -136,7 +136,7 @@ public class ClientTest
         client.placeOrder(null, true);
 
         assertTrue(output.toString().contains(
-            "Your order is empty.  Please select at least one food item"));
+            "Your order is empty. Please select at least one food item"));
         assertNull(client.getCurrentOrder());
     }
 
@@ -247,6 +247,6 @@ public class ClientTest
         String result = output.toString();
 
         assertTrue(result.contains("Orders ahead: 0"));
-        assertTrue(result.contains("Estimated wait time: 15.00 minutes"));
+        assertTrue(result.contains("Estimated wait time: 15.0 minutes"));
     }
 }
