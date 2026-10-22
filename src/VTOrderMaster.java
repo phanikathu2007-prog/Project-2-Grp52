@@ -17,6 +17,7 @@ public class VTOrderMaster
     private static Client client;
     private static HashMap<String, Food> menu;
     private static OrderQueue orderQueue;
+    private static Authenticator authenticator;
     private static int nextOrderNumber = 1;
 
     /**
@@ -31,7 +32,7 @@ public class VTOrderMaster
 
         menu = new HashMap<String, Food>();
         orderQueue = new OrderQueue();
-
+        authenticator = new Authenticator(orderQueue);
         menu.put("Burger", new Food("Burger", 7.00, 15.00));
         menu.put("Fries", new Food("Fries", 3.00, 5.00));
         
@@ -43,7 +44,8 @@ public class VTOrderMaster
             System.out.println("1. Place an order");
             System.out.println("2. View orders ahead and estimated wait");
             System.out.println("3. View food menu");
-            System.out.println("4. Exit");
+            System.out.println("4. Cancel an order");
+            System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
 
             String choice = scanner.nextLine();
@@ -65,6 +67,10 @@ public class VTOrderMaster
                 );
                     
                 client.placeOrder();
+
+                System.out.println("Your order number is: " + nextOrderNumber);
+                System.out.println("Your cancellation UUID is: " + customerUUID);
+
                 nextOrderNumber++;
             }
             else if (choice.equals("2"))
@@ -90,6 +96,20 @@ public class VTOrderMaster
                 }
             }
             else if (choice.equals("4"))
+            {
+                System.out.print("Enter your order UUID to cancel: ");
+                String uuidInput = scanner.nextLine();
+                try
+                {
+                    UUID cancelUUID = UUID.fromString(uuidInput);
+                    authenticator.cancelOrder(cancelUUID);
+                }
+                catch (IllegalArgumentException e)
+                {
+                    System.out.println("Incorrect password. Your order has not been cancelled");
+                }  
+            }
+            else if (choice.equals("5"))
             {
                 running = false;
                 System.out.println("Goodbye, come back when you're hungry!");

@@ -18,11 +18,8 @@ public class Authenticator{
             System.out.println("Incorrect password. Your order has not been cancelled");
             return false;
         }
-
-        // Delegates removal to OrderQueue which manages the underlying LinkedChain
-        boolean removed = orderQueue.removeOrder(customerUUID);
         
-        if (removed)
+        if (orderQueue.removeOrder(customerUUID))
         {
             System.out.println("Your order has been successfully cancelled.");
             return true;
