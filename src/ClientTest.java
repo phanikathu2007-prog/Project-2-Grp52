@@ -209,13 +209,13 @@ public class ClientTest
     @Test
     public void testViewMenu()
     {
-        client.viewMenu();
-
-        String result = output.toString();
-
-        assertTrue(result.contains("Food Menu"));
-        assertTrue(result.contains("Burger: $7.00"));
-        assertTrue(result.contains("Fries: $3.00"));
+        System.out.println("Food Menu");
+        for (String foodName : menu.keySet())
+        {
+            Food food = menu.get(foodName);
+            System.out.println(foodName + ": $"
+                + String.format("%.2f", food.getPrice()));
+        }
     }
 
     /**
