@@ -67,11 +67,22 @@ Brinda created the test class for Client to test customer actions and order plac
 OrderQueue.java
 Brinda created the OrderQueue class, which manages active orders and provides methods for checking order counts and estimated wait times.
 
+OrderQueueTest.java
+Phani created the test class for the OrderQueue class. This includes the newly added 
+removeOrder method, which handes the stretch goals order cancellation.
+
 VTOrderMaster.java
 Phani created the main runner class, which displays the main menu and connects the program's options to the appropriate methods.
 
 LinkedChainTest.java
 Phani created the test class for LinkedChain to check its methods with normal and invalid inputs.
+
+Authenticator.java
+Phani implemented the security handler that validates customers UUIDs with the order queue
+to make sure no one cancels other peoples orders
+
+AuthenticatorTest.java
+Phani created the test methods covering valid UUID cancellations, null parameter rejections, and attempts to cancel missing orders.
 
 # GenAI Notice
 
