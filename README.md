@@ -44,7 +44,7 @@ Test wait time calculations with multiple orders and empty queues. Test finding 
 # Atribution
 Romeo: Added food class and food test class
 Brinda: Added OrderInfo, OrderInfoTest, Client, ClientTest, and OrderQueue classes
-Phani: Created the VTOrderMaster and the test for the linkedChain class.
+Phani: Created the VTOrderMaster, the Authenticator, and the test for the linkedChain class.
 
 Food.java
 Romeo created the Food class, which stores a food item's name, price, and preparation time.
