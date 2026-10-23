@@ -9,6 +9,10 @@ public class FoodTest
 {
     private static final double DELTA = 0.0001;
 
+    /**
+     * Tests creating a Food object with valid name, price, and prep time,
+     * and ensures getters return the expected values.
+     */
     @Test
     public void testConstructorValidInput()
     {
@@ -19,6 +23,9 @@ public class FoodTest
         assertEquals(20.5, food.getPrepTime(), DELTA);
     }
 
+    /**
+     * Tests creating a Food object with zero price and prep time boundary values.
+     */
     @Test
     public void testConstructorZeroPriceAndPrepTime()
     {
@@ -29,6 +36,9 @@ public class FoodTest
         assertEquals(0.00, food.getPrepTime(), DELTA);
     }
 
+    /**
+     * Tests creating a Food object with a single-character name.
+     */
     @Test
     public void testConstructorSingleCharacterName()
     {
@@ -37,6 +47,10 @@ public class FoodTest
         assertEquals("X", food.getName());
     }
 
+    /**
+     * Tests that providing a null name to the constructor throws 
+     * an IllegalArgumentException with the correct error message.
+     */
     @Test
     public void testConstructorNullName()
     {
@@ -51,6 +65,10 @@ public class FoodTest
         }
     }
 
+    /**
+     * Tests that providing an empty string name to the constructor throws 
+     * an IllegalArgumentException with the correct error message.
+     */
     @Test
     public void testConstructorEmptyName()
     {
@@ -65,6 +83,10 @@ public class FoodTest
         }
     }
 
+    /**
+     * Tests that providing a negative price throws 
+     * an IllegalArgumentException with the correct error message.
+     */
     @Test
     public void testConstructorNegativePrice()
     {
@@ -79,6 +101,11 @@ public class FoodTest
         }
     }
 
+
+    /**
+     * Tests that providing a negative prep time throws 
+     * an IllegalArgumentException with the correct error message.
+     */
     @Test
     public void testConstructorNegativePrepTime()
     {
@@ -93,6 +120,9 @@ public class FoodTest
         }
     }
 
+    /**
+     * Tests the getName accessor method.
+     */
     @Test
     public void testGetName()
     {
@@ -101,6 +131,10 @@ public class FoodTest
         assertEquals("Burger", food.getName());
     }
 
+
+    /**
+     * Tests the getPrice accessor method.
+     */
     @Test
     public void testGetPrice()
     {
@@ -109,6 +143,9 @@ public class FoodTest
         assertEquals(3.00, food.getPrice(), DELTA);
     }
 
+    /**
+     * Tests the getPrepTime accessor method.
+     */
     @Test
     public void testGetPrepTime()
     {
